@@ -28,6 +28,7 @@ const SignUpTemplate = (props, context) => {
                   onChange={props.onChnageListener} />
               </div>
             </div>
+            <div>{props.signUpState.formErrors.userName}</div>
             <div className="input-div pass">
               <div className="i">
                 <i className="fas fa-lock"></i>
@@ -40,6 +41,7 @@ const SignUpTemplate = (props, context) => {
                   onChange={props.onChnageListener} />
               </div>
             </div>
+            <div>{props.signUpState.formErrors.password}</div>
             <div className="input-div pass">
               <div className="i">
                 <i className="fas fa-lock"></i>
@@ -52,8 +54,9 @@ const SignUpTemplate = (props, context) => {
                   onChange={props.onChnageListener} />
               </div>
             </div>
+            <div>{props.signUpState.formErrors.confirmPassword}</div>
             <h3 onClick={() => { history.push("/login") }} >Already have an account?</h3>
-            <button type="submit" className="btn">Sign In</button>
+            <button type="submit" className="btn" onClick={props.onSignUpClick}>Sign In</button>
           </div>
         </div>
       </div>

@@ -1,26 +1,77 @@
 import React, { Component } from 'react';
 import LoginTemplate from '../component/login-template/login-template';
-import { emailPattern, passwordPattern } from '../utils/util';
 import { history } from '../redux/history';
+import { EMAIL_PATTERN } from '../utils/util';
 class Login extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       userName: "",
-      password: ""
+      password: "",
+      formErrors: {
+        userName: '',
+        password: ''
+      },
+      isFormSubmitted: false
     };
     this.onChangeListener = this.onChangeListener.bind(this);
     this.newUserClick = this.newUserClick.bind(this);
+    this.onLoginClick = this.onLoginClick.bind(this);
   }
 
   onChangeListener(event) {
-    console.log("onChangeListener");
     const name = event.target.name;
     let value = event.target.value;
+    value = value.replace(/\s/g, "");
     this.setState({ [name]: value }, () => {
-      console.log(this.state.userName);
-      console.log(this.state.password);
+      if (this.state.isFormSubmitted) {
+        this.validateField(name, value);
+      }
     });
+  }
+
+  onLoginClick() {
+    this.setState({ isFormSubmitted: true });
+    if (!this.isAllFieldValid()) {
+      return;
+    }
+  }
+
+  isAllFieldValid() {
+    let formErrors = this.state.formErrors;
+    let isAllValid = true;
+    for (let fieldName in formErrors) {
+      this.validateField(fieldName, this.state[fieldName]);
+      if (formErrors[fieldName].length > 0) {
+        isAllValid = false;
+      }
+    }
+    return isAllValid;
+  }
+
+  validateField(name, value) {
+    let formErrors = this.state.formErrors;
+    switch (name) {
+      case 'userName':
+        if (value.trim() === '') {
+          formErrors.userName = 'Enter Username';
+        } else if (!value.match(EMAIL_PATTERN)) {
+          formErrors.userName = 'Enter Valid UserName';
+        } else {
+          formErrors.userName = '';
+        }
+        break;
+      case 'password':
+        if (value.trim() === '') {
+          formErrors.password = 'Enter Password';
+        } else if (value.length < 8) {
+          formErrors.password = 'Maximum length of password Should be 8';
+        } else {
+          formErrors.password = '';
+        }
+        break;
+    }
+    this.setState({ formErrors });
   }
 
   newUserClick() {
@@ -33,7 +84,8 @@ class Login extends Component {
         <LoginTemplate
           loginState={this.state}
           newUserClick={this.newUserClick}
-          onChangeListener={this.onChangeListener} />
+          onChangeListener={this.onChangeListener}
+          onLoginClick={this.onLoginClick} />
       </div>
     )
   }

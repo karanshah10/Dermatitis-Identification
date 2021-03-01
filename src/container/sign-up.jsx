@@ -1,30 +1,92 @@
 import React, { Component } from 'react';
 import SignUpTemplate from '../component/signin-template/signup-template';
+import { EMAIL_PATTERN } from '../utils/util';
 class SignUp extends Component {
   constructor(props) {
     super(props);
   }
+
   state = {
     userName: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    formErrors: {
+      userName: "",
+      password: "",
+      confirmPassword: ""
+    },
+    isFormSubmitted: false
   }
 
   onChnageListener = (event) => {
     console.log("onChnageListener");
     const name = event.target.name;
     let value = event.target.value;
-
+    value = value.replace(/\s/g, "");
     this.setState({ [name]: value }, () => {
-      console.log(this.state)
+      this.validateField(name, value);
     });
+  }
+
+  onSignUpClick = () => {
+    this.setState({ isFormSubmitted: true });
+    if (!this.isAllFieldValid()) {
+      return;
+    }
+  }
+
+  isAllFieldValid = () => {
+    let formErrors = this.state.formErrors;
+    let isAllValid = true;
+    for (let fieldName in formErrors) {
+      this.validateField(fieldName, this.state[fieldName]);
+      if (formErrors[fieldName].length > 0) {
+        isAllValid = false;
+      }
+    }
+    return isAllValid;
+  }
+
+  validateField = (name, value) => {
+    let formErrors = this.state.formErrors;
+    switch (name) {
+      case 'userName':
+        if (value.trim() === '') {
+          formErrors.userName = 'Enter Username';
+        } else if (!value.match(EMAIL_PATTERN)) {
+          formErrors.userName = 'Enter Valid UserName';
+        } else {
+          formErrors.userName = '';
+        }
+        break;
+      case 'password':
+        if (value.trim() === '') {
+          formErrors.password = 'Enter Password';
+        } else if (value.length < 8) {
+          formErrors.password = 'Maximum length of password Should be 8';
+        } else {
+          formErrors.password = '';
+        }
+        break;
+      case 'confirmPassword':
+        if (value.trim() === '') {
+          formErrors.confirmPassword = 'Enter Password';
+        } else if (this.state.password != value) {
+          formErrors.confirmPassword = 'Password did not match';
+        } else {
+          formErrors.confirmPassword = '';
+        }
+        break;
+    }
+    this.setState({ formErrors });
   }
 
   render() {
     return (
       <div>
         <SignUpTemplate signUpState={this.state}
-          onChnageListener={this.onChnageListener} />
+          onChnageListener={this.onChnageListener}
+          onSignUpClick={this.onSignUpClick} />
       </div>
     )
   }

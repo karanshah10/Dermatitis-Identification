@@ -29,6 +29,8 @@ const LoginTemplate = (props, context) => {
 
               </div>
             </div>
+            <div>{props.loginState.formErrors.userName}</div>
+
             <div className="input-div pass">
               <div className="i">
                 <i className="fas fa-lock"></i>
@@ -40,11 +42,11 @@ const LoginTemplate = (props, context) => {
                   onChange={props.onChangeListener}
                   value={props.loginState.password}
                 />
-
               </div>
             </div>
+            <div>{props.loginState.formErrors.password}</div>
             <h3 onClick={props.newUserClick} >New User?</h3>
-            <button type="submit" className="btn">Login</button>
+            <button type="submit" className="btn" onClick={props.onLoginClick}>Login</button>
           </div>
         </div>
       </div>

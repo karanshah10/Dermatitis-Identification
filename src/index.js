@@ -5,14 +5,20 @@ import App from './App';
 import { Router } from 'react-router-dom';
 import { history } from './redux/history';
 import reportWebVitals from './reportWebVitals';
-history.push('/dashbord');
-ReactDOM.render(
-  <React.StrictMode>
-    <Router history={history}>
-      <App />
+import { Provider } from 'react-redux';
+import store from './redux/store/store';
+// const store = createStore(() => [], {}, applyMiddleware());
 
-    </Router>
-  </React.StrictMode>,
+history.push('/login');
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <Router history={history}>
+        <App />
+
+      </Router>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

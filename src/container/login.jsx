@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as loginActions from '../redux/actions/login-action';
+import { bindActionCreators } from 'redux';
 import LoginTemplate from '../component/login-template/login-template';
 import { history } from '../redux/history';
 import { EMAIL_PATTERN } from '../utils/util';
@@ -35,6 +38,7 @@ class Login extends Component {
     if (!this.isAllFieldValid()) {
       return;
     }
+    this.props.loginAction.loginSuccess(true);
     history.push('/dashbord');
   }
 
@@ -92,4 +96,16 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = () => {
+  return {
+
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginAction: bindActionCreators(loginActions, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

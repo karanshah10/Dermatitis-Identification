@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SignUpTemplate from '../component/signin-template/signup-template';
 import { EMAIL_PATTERN } from '../utils/util';
+import { connect } from 'react-redux';
+import * as signUpActions from '../redux/actions/sign-up-action';
+import { bindActionCreators } from 'redux';
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +37,9 @@ class SignUp extends Component {
     if (!this.isAllFieldValid()) {
       return;
     }
+
+    let signUpData = { 'userName': this.state.userName, 'password': this.state.password }
+    this.props.signUpAction.doSignUp(true, signUpData);
   }
 
   isAllFieldValid = () => {
@@ -93,4 +99,16 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = () => {
+  return {
+
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUpAction: bindActionCreators(signUpActions, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

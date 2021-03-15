@@ -1,1 +1,3 @@
 export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
+export const SET_SIGNUP_SUCCESS = "SET_SIGNUP_SUCCESS";
+export const SET_MODEL = "SET_MODEL";

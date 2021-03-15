@@ -13,21 +13,13 @@ const NevigationAndHeaderTemplate = (props, context) => {
           <h4><b>Dermatitis Indentification</b></h4>
         </div>
         <div className="w3-bar-block">
-          <a href="#portfolio" className="w3-bar-item w3-button w3-padding w3-text-teal"><i className="fa fa-th-tint fa-fw w3-margin-right"></i>Models</a>
-          <a href="#about" className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 1</a>
-          <a href="#contact" className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 2</a>
+          <p onClick={props.setDefault} className="w3-bar-item w3-button w3-padding w3-text-teal"><i className="fa fa-th-tint fa-fw w3-margin-right"></i>Models</p>
+          <p name="Deep Learning Model 1" onClick={() => props.nevigateTo('Deep Learning Model 1')} className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 1</p>
+          <p name="Deep Learning Model 2" onClick={() => props.nevigateTo('Deep Learning Model 2')} className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 2</p>
+          <p onClick={props.onLogout} className="w3-bar-item w3-button w3-padding"><i className="fa fa-sign-out "></i>Logout</p>
         </div>
-        <div className="w3-panel w3-large">
-          <i className="fa fa-facebook-official w3-hover-opacity"></i>
-          <i className="fa fa-instagram w3-hover-opacity"></i>
-          <i className="fa fa-snapchat w3-hover-opacity"></i>
-          <i className="fa fa-pinterest-p w3-hover-opacity"></i>
-          <i className="fa fa-twitter w3-hover-opacity"></i>
-          <i className="fa fa-linkedin w3-hover-opacity"></i>
-        </div>
+
       </nav>
-
-
 
     </div>
 

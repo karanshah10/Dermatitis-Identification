@@ -1,32 +1,61 @@
 import React, { Component, useState } from 'react';
 import NevigationAndHeaderTemplate from '../component/nevigation-and-header/nevigation-and-header';
-import { Route, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
+import { connect } from 'react-redux';
+import * as nevigationAndHeaderActions from '../redux/actions/nevigation-header-action';
+import * as loginActions from '../redux/actions/login-action';
+import { bindActionCreators } from 'redux';
 
 class NavigationAndHeader extends Component {
 
   state = {
-    isToggleClicked: false
+    isToggleClicked: false,
+    isRender: false
   }
 
   onToggleClick = (event) => {
     event.preventDefault();
     this.setState({ isToggleClicked: !this.state.isToggleClicked });
   }
+
+  nevigateTo = (modelName) => {
+    this.props.nevigationAndHeaderAction.setModel(modelName, true);
+  }
+
+  setDefault = () => {
+    this.props.nevigationAndHeaderAction.setModel("Please Select Model", false);
+  }
+  onLogout = () => {
+    this.props.loginAction.logout();
+  }
+
   render() {
     return (
       <div>
-        <NevigationAndHeaderTemplate nevState={this.state} onToggleClick={this.onToggleClick} />
-
-        <Switch>
-          <Route path="/dashbord" component={Dashboard} />
-          <Route path="/Model 1" />
-          <Route path="/Model 2" />
-        </Switch>
+        <NevigationAndHeaderTemplate nevState={this.state}
+          onToggleClick={this.onToggleClick}
+          setDefault={this.setDefault}
+          onLogout={this.onLogout}
+          nevigateTo={this.nevigateTo} />
+        <Dashboard />
       </div>
     )
   }
 }
 
-export default NavigationAndHeader;
+const mapStateToProps = () => {
+  return {
+
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    nevigationAndHeaderAction: bindActionCreators(nevigationAndHeaderActions, dispatch),
+    loginAction: bindActionCreators(loginActions, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationAndHeader);
+
 

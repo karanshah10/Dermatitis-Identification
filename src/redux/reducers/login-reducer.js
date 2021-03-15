@@ -1,7 +1,8 @@
 import { SET_LOGIN_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
-  isLoginSuccess: false
+  isLoginSuccess: false,
+  loginData: {}
 }
 
 export default function (state = initialState, action) {
@@ -9,7 +10,8 @@ export default function (state = initialState, action) {
 
     case SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        isLoginSuccess: action.isLoginSuccess
+        isLoginSuccess: action.isLoginSuccess,
+        loginData: action.loginData
       });
 
     default:

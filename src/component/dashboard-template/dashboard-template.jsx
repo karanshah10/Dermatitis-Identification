@@ -9,21 +9,23 @@ const DashboardTemplate = (props, context) => {
       <header>
         <span className="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" ><i className="fa fa-bars"></i></span>
         <div className="w3-container">
-          <h1><b>Selected Model</b></h1>
-          <div className="w3-section w3-bottombar w3-padding-16">
+          <h1><b>{props.modelName}</b></h1>
+          {props.isModelSelected ? <div className="w3-section w3-bottombar w3-padding-16">
             <ImageUpload setImageSec={props.setImageSec} />
-          </div>
+          </div> : null}
         </div>
       </header>
-      <div className="container">
+      {props.isModelSelected ? <div className="container">
         <div className="block">
           <h3>Title 1</h3>
           <img src={props.dashboardState.imageSrc} />
         </div>
         <div>
-          <button>Predict</button>
+          <button onClick={props.onPredict}>Predict</button><br /><br /><br /><br /><br /><br /><br />
+          <p className="result">{props.dashboardState.result}</p>
         </div>
-      </div>
+
+      </div> : null}
     </div>
   );
 

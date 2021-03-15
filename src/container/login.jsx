@@ -38,8 +38,8 @@ class Login extends Component {
     if (!this.isAllFieldValid()) {
       return;
     }
-    this.props.loginAction.loginSuccess(true);
-    history.push('/dashbord');
+    let loginData = { 'userName': this.state.userName, 'password': this.state.password }
+    this.props.loginAction.doLogin(true, loginData);
   }
 
   isAllFieldValid() {

@@ -5,7 +5,7 @@ import App from './App';
 import { Router } from 'react-router-dom';
 import { history } from './redux/history';
 import reportWebVitals from './reportWebVitals';
-history.push('/login');
+history.push('/dashbord');
 ReactDOM.render(
   <React.StrictMode>
     <Router history={history}>

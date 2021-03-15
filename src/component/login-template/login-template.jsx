@@ -29,7 +29,7 @@ const LoginTemplate = (props, context) => {
 
               </div>
             </div>
-            <div>{props.loginState.formErrors.userName}</div>
+            <div className="errorMessage">{props.loginState.formErrors.userName}</div>
 
             <div className="input-div pass">
               <div className="i">
@@ -44,7 +44,7 @@ const LoginTemplate = (props, context) => {
                 />
               </div>
             </div>
-            <div>{props.loginState.formErrors.password}</div>
+            <div className="errorMessage">{props.loginState.formErrors.password}</div>
             <h3 onClick={props.newUserClick} >New User?</h3>
             <button type="submit" className="btn" onClick={props.onLoginClick}>Login</button>
           </div>

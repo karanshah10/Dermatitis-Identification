@@ -35,6 +35,7 @@ class Login extends Component {
     if (!this.isAllFieldValid()) {
       return;
     }
+    history.push('/dashbord');
   }
 
   isAllFieldValid() {

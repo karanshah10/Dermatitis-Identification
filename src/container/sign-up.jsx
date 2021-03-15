@@ -19,12 +19,13 @@ class SignUp extends Component {
   }
 
   onChnageListener = (event) => {
-    console.log("onChnageListener");
     const name = event.target.name;
     let value = event.target.value;
     value = value.replace(/\s/g, "");
     this.setState({ [name]: value }, () => {
-      this.validateField(name, value);
+      if (this.state.isFormSubmitted) {
+        this.validateField(name, value);
+      }
     });
   }
 

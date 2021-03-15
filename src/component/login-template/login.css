@@ -176,6 +176,10 @@ h3:hover {
   transition: .5s;
 }
 
+.errorMessage {
+  color: red;
+}
+
 .btn:hover {
   background-position: right;
 }

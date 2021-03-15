@@ -5,6 +5,7 @@ import SignUp from './container/sign-up';
 import Main from './routes/main';
 import logo from './logo.svg';
 import './App.css';
+import Redux from 'redux';
 
 class App extends Component {
   render() {

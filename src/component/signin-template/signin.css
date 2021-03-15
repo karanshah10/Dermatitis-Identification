@@ -49,6 +49,9 @@
 .login-content img {
   height: 100px;
 }
+.errorMessage{
+  color: red;
+}
 
 .login-content h2 {
   margin: 15px 0;

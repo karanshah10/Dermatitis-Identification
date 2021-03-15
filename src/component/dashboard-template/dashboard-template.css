@@ -1,0 +1,23 @@
+.w3-main {
+  margin-left: 300px;
+}
+
+.w3-hover-opacity {
+  width: 100%
+}
+
+.block {
+  display: inline-block;
+  width: 550px;
+  height: 500px;
+  background-color: lightgray;
+}
+
+.container {
+  text-align: center;
+}
+
+.block img {
+  width: 650px;
+  height: 550px;
+}

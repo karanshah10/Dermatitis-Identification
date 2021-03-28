@@ -6,6 +6,7 @@ const ImageUpload = (props) => {
   const inputFile = useRef(null);
 
   const handleFileUpload = e => {
+    console.log(e.target);
     const { files } = e.target;
     if (files && files.length) {
       const filename = files[0].name;

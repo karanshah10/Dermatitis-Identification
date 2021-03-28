@@ -12,6 +12,7 @@ const DashboardTemplate = (props, context) => {
           <h1><b>{props.modelName}</b></h1>
           {props.isModelSelected ? <div className="w3-section w3-bottombar w3-padding-16">
             <ImageUpload setImageSec={props.setImageSec} />
+
           </div> : null}
         </div>
       </header>

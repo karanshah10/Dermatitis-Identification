@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store/store';
 // const store = createStore(() => [], {}, applyMiddleware());
 
-history.push('/dashbord');
+// history.push('/dashbord');
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

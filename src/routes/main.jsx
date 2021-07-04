@@ -1,11 +1,37 @@
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import NavigationAndHeader from '../container/nevigation-and-header';
-const Main = (props) => {
-  return (
-    <div>
-      <Route component={NavigationAndHeader} />
-    </div>
-  )
+import { connect } from 'react-redux';
+import { history } from '../redux/history';
+class Main extends Component {
+
+  componentDidMount() {
+    console.log(this.props.isLoginSuccess)
+    if (!this.props.isLoginSuccess) {
+      history.push('/login')
+    }else{
+      history.push('/dashbord')
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Route component={NavigationAndHeader} />
+      </div >
+    )
+  }
 }
 
-export default Main;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLoginSuccess: state.loginReducer.isLoginSuccess
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);;

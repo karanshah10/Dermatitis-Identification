@@ -38,8 +38,7 @@ class SignUp extends Component {
       return;
     }
 
-    let signUpData = { 'userName': this.state.userName, 'password': this.state.password }
-    this.props.signUpAction.doSignUp(true, signUpData);
+    this.props.signUpAction.doSignUp(this.state.userName, this.state.password);
   }
 
   isAllFieldValid = () => {

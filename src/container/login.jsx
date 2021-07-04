@@ -38,8 +38,7 @@ class Login extends Component {
     if (!this.isAllFieldValid()) {
       return;
     }
-    let loginData = { 'userName': this.state.userName, 'password': this.state.password }
-    this.props.loginAction.doLogin(true, loginData);
+    this.props.loginAction.doLogin(this.state.userName, this.state.password);
   }
 
   isAllFieldValid() {

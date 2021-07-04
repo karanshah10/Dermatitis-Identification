@@ -4,8 +4,8 @@ import ImageUploadTemplate from '../component/image-upload-template/image-upload
 const ImageUpload = (props) => {
   // const [image, setImage] = useState("");
   const inputFile = useRef(null);
-
   const handleFileUpload = e => {
+    console.log("handleFileUpload")
     console.log(e.target);
     const { files } = e.target;
     if (files && files.length) {
@@ -21,6 +21,7 @@ const ImageUpload = (props) => {
   };
 
   const onButtonClick = () => {
+    console.log("onButtonClick")
     inputFile.current.click();
   };
 

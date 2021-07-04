@@ -36,3 +36,59 @@
     transform: rotate(360deg);
   }
 }
+
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+.loader:before {
+  content: " ";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  max-width: 0.001%;
+  /* Just in case the text wrapps, you shouldn't notice it */
+}
+
+.loader img {
+  height: 100px;
+  top: 45%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.notificationWrapper {
+  z-index: 99;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+}
+
+.notificationWrapper .alert {
+  text-align: center;
+  border-radius: 20px 20px 20px 0px;
+  color: #ffffff;
+  border: 0px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 8px 20px;
+}
+
+.notificationWrapper .alert.alert-success {
+  background-color: #20A520;
+}
+
+.alert.alert-danger {
+  background-color: #ED2323;
+}

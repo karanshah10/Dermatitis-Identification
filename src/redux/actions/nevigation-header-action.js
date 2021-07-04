@@ -1,9 +1,8 @@
 import { SET_MODEL } from './actionTypes';
 
-export function setModel(modelName, isModelSelected) {
+export function setModel(isModelSelected) {
   return {
     type: SET_MODEL,
-    modelName: modelName,
     isModelSelected: isModelSelected
   }
 }

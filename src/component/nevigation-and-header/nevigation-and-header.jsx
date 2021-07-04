@@ -14,8 +14,11 @@ const NevigationAndHeaderTemplate = (props, context) => {
         </div>
         <div className="w3-bar-block">
           <p onClick={props.setDefault} className="w3-bar-item w3-button w3-padding w3-text-teal"><i className="fa fa-th-tint fa-fw w3-margin-right"></i>Models</p>
-          <p name="Deep Learning Model 1" onClick={() => props.nevigateTo('Deep Learning Model 1')} className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 1</p>
-          <p name="Deep Learning Model 2" onClick={() => props.nevigateTo('Deep Learning Model 2')} className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>Deep Larning Model 2</p>
+          {props.modelSData.map((model) => {
+            return (
+              <p onClick={() => props.nevigateTo(model.name)} className="w3-bar-item w3-button w3-padding"><i className="fa fa-tint fa-fw w3-margin-right"></i>{model.name}</p>
+            )
+          })}
           <p onClick={props.onLogout} className="w3-bar-item w3-button w3-padding"><i className="fa fa-sign-out "></i>Logout</p>
         </div>
 
